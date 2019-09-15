@@ -1,0 +1,17 @@
+apply plugin: "com.android.library"
+apply plugin: "org.jetbrains.kotlin.android"
+apply plugin: "com.vanniktech.maven.publish"
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        minSdkVersion 21
+    }
+}
+
+dependencies {
+    api project(":binder")
+    api "androidx.recyclerview:recyclerview:1.0.0"
+    api 'com.hannesdorfmann:adapterdelegates4-kotlin-dsl:4.2.0'
+}
