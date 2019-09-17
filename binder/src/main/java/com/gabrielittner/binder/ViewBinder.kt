@@ -12,7 +12,7 @@ abstract class ViewBinder<State, Action>(
 ) : Binder<State, Action> {
 
     private var internalState: State? = null
-    protected val state: State? = internalState
+    protected val state: State? get() = internalState
 
     abstract override val actions: Observable<Action>
 
