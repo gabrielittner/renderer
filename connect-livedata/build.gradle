@@ -11,7 +11,9 @@ android {
 }
 
 dependencies {
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    api "io.reactivex.rxjava2:rxjava:2.2.12"
-    api "androidx.fragment:fragment:1.1.0"
+    api project(":binder")
+    implementation project(":connect-base")
+    api "androidx.lifecycle:lifecycle-runtime:2.0.0"
+    api "androidx.lifecycle:lifecycle-livedata-core:2.0.0"
+    api "androidx.fragment:fragment:1.0.0"
 }

@@ -2,66 +2,54 @@ package com.gabrielittner.binder.connectors
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import com.gabrielittner.binder.Binder
 import com.gabrielittner.binder.ViewBinder
 import com.gabrielittner.binder.create
-import io.reactivex.disposables.Disposable
 
 fun <State, Action> Fragment.connect(
-    uiFactory: ViewBinder.Factory<State, Action>,
-    model: ViewStateModel<State, Action>
+    binderFactory: ViewBinder.Factory<State, Action>,
+    model: RxViewModel<State, Action>
 ) {
-    val ui = uiFactory.create(this)
-    return connect(ui, model)
+    val binder = binderFactory.create(this)
+    return connect(binder, model)
 }
 
 fun <State, Action> FragmentActivity.connect(
-    uiFactory: ViewBinder.Factory<State, Action>,
-    model: ViewStateModel<State, Action>
+    binderFactory: ViewBinder.Factory<State, Action>,
+    model: RxViewModel<State, Action>
 ) {
-    val ui = uiFactory.create(this)
-    return connect(ui, model)
+    val binder = binderFactory.create(this)
+    return connect(binder, model)
 }
 
 fun <State, Action> LifecycleOwner.connect(
     binder: Binder<State, Action>,
-    model: ViewStateModel<State, Action>
+    model: RxViewModel<State, Action>
 ) {
     return lifecycle.connect(binder, model)
 }
 
 fun <State, Action> Lifecycle.connect(
     binder: Binder<State, Action>,
-    model: ViewStateModel<State, Action>
+    model: RxViewModel<State, Action>
 ) {
-    val observer = WhileStartedObserver(binder, model)
+    val observer = RxWhileStartedObserver(binder, model)
     addObserver(observer)
 }
 
-private class WhileStartedObserver<State, Action>(
+private class RxWhileStartedObserver<State, Action>(
     private val binder: Binder<State, Action>,
-    private val model: ViewStateModel<State, Action>
-) : DefaultLifecycleObserver {
-    var disposable: Disposable? = null
+    private val model: RxViewModel<State, Action>
+) : WhileStartedObserver() {
 
     override fun onStart(owner: LifecycleOwner) {
         disposable = model.observe(binder.actions)
             .subscribe(
                 { binder.render(it) },
-                { throw BinderConnectionException(
-                    exceptionMessage(it, owner),
-                    it
-                )
-                }
+                { crashApp(exceptionMessage(it, owner), it) }
             )
-    }
-
-    override fun onStop(owner: LifecycleOwner) {
-        disposable?.dispose()
-        disposable = null
     }
 
     private fun exceptionMessage(throwable: Throwable, owner: LifecycleOwner): String {
@@ -70,8 +58,3 @@ private class WhileStartedObserver<State, Action>(
                 "while lifecycle state is ${owner.lifecycle.currentState}"
     }
 }
-
-private class BinderConnectionException(
-    message: String,
-    cause: Throwable
-) : RuntimeException(message, cause)

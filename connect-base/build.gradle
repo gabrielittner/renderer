@@ -11,6 +11,7 @@ android {
 }
 
 dependencies {
-    api project(":binder")
-    api "androidx.lifecycle:lifecycle-common-java8:2.0.0"
+    api "io.reactivex.rxjava2:rxjava:2.2.12"
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.0.0"
+    implementation "androidx.fragment:fragment:1.0.0"
 }

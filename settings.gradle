@@ -1,1 +1,1 @@
-include ':binder', ':binder-list', ':connectors'
+include ':binder', ':binder-list', ':connect-base', ':connect-livedata', ':connect-rx'
