@@ -1,4 +1,4 @@
-package com.gabrielittner.binder.connectors
+package com.gabrielittner.binder.connect
 
 import androidx.lifecycle.LiveData
 

@@ -1,4 +1,4 @@
-package com.gabrielittner.binder.connectors
+package com.gabrielittner.binder.connect
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

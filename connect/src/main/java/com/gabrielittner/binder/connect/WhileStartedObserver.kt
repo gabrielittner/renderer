@@ -1,10 +1,10 @@
-package com.gabrielittner.binder.connectors
+package com.gabrielittner.binder.connect
 
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import io.reactivex.disposables.Disposable
 
-abstract class WhileStartedObserver : DefaultLifecycleObserver {
+internal abstract class WhileStartedObserver : DefaultLifecycleObserver {
     protected var disposable: Disposable? = null
 
     override fun onStop(owner: LifecycleOwner) {

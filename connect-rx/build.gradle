@@ -11,9 +11,6 @@ android {
 }
 
 dependencies {
-    api project(":binder")
-    implementation project(":connect-base")
+    api project(":connect")
     api "io.reactivex.rxjava2:rxjava:2.2.12"
-    api "androidx.lifecycle:lifecycle-runtime:2.0.0"
-    api "androidx.fragment:fragment:1.0.0"
 }
