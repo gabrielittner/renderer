@@ -33,14 +33,14 @@ val ViewBinder<*, *>.context get(): Context = rootView.context
 
 fun <T : View> ViewBinder<*, *>.bind(@IdRes id: Int): T = rootView.findViewById(id)
 
-fun <State, Event> ViewBinder.Factory<State, Event>.create(
+fun <State, Action> ViewBinder.Factory<State, Action>.create(
     fragment: Fragment
-): Binder<State, Event> {
+): Binder<State, Action> {
     return create(fragment.view!!)
 }
 
-fun <State, Event> ViewBinder.Factory<State, Event>.create(
+fun <State, Action> ViewBinder.Factory<State, Action>.create(
     activity: FragmentActivity
-): Binder<State, Event> {
+): Binder<State, Action> {
     return create(activity.findViewById(android.R.id.content))
 }
