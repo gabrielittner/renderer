@@ -1,7 +1,7 @@
 Change Log
 ==========
 
-Version 0.2.0 *(2019-09-17)*
+Version 0.2.0 *(2019-10-20)*
 ----------------------------
 
 - renamed Binder to Renderer (also includes artifact names)
