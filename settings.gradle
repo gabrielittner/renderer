@@ -1,1 +1,1 @@
-include ':binder', ':binder-delegation', ':binder-list', ':connect', ':connect-rx'
+include ':renderer', ':renderer-delegation', ':renderer-list', ':connect', ':connect-rx'

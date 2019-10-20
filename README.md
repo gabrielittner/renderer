@@ -1,4 +1,4 @@
-# Binder
+# Renderer
 
 TODO
 
@@ -7,9 +7,9 @@ TODO
 Add a Gradle dependency:
 
 ```groovy
-implementation "com.gabrielittner.binder:binder:0.1.1"
-implementation "com.gabrielittner.binder:binder-list:0.1.1"
-implementation "com.gabrielittner.binder:connectors:0.1.1"
+implementation "com.gabrielittner.renderer:renderer:0.1.1"
+implementation "com.gabrielittner.renderer:renderer-list:0.1.1"
+implementation "com.gabrielittner.renderer:connectors:0.1.1"
 ```
 
 Snapshots of the development version are available in [Sonatype's `snapshots` repository][snap].
