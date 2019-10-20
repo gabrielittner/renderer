@@ -7,9 +7,22 @@ TODO
 Add a Gradle dependency:
 
 ```groovy
-implementation "com.gabrielittner.renderer:renderer:0.1.1"
-implementation "com.gabrielittner.renderer:renderer-list:0.1.1"
-implementation "com.gabrielittner.renderer:connectors:0.1.1"
+implementation "com.gabrielittner.renderer:renderer:0.2.0"
+implementation "com.gabrielittner.renderer:connect:0.2.0"
+implementation "com.gabrielittner.renderer:connect-rx:0.2.0"
+```
+
+Snapshots of the development version are available in [Sonatype's `snapshots` repository][snap].
+
+## Experimental artifacts
+
+These artifacts are still being tested. They might change significantly or be removed.
+
+Add a Gradle dependency:
+
+```groovy
+implementation "com.gabrielittner.renderer:renderer-delegation:0.2.0"
+implementation "com.gabrielittner.renderer:renderer-list:0.2.0"
 ```
 
 Snapshots of the development version are available in [Sonatype's `snapshots` repository][snap].
