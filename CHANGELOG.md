@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+Version 0.2.1 *(2019-10-26)*
+----------------------------
+
+- fix the used `LifecycleOwner` used to connect a `Fragment`
+
 Version 0.2.0 *(2019-10-20)*
 ----------------------------
 
@@ -10,6 +15,11 @@ Version 0.2.0 *(2019-10-20)*
 - new `connect-rx` artifact that contains `RxLiveDataViewModel`
 - moved `DelegatingBinder` to it's own `binder-delegation` artifact
 - various naming improvements/fixes
+
+Version 0.1.2 *(2019-09-26)*
+----------------------------
+
+- fix the used `LifecycleOwner` used to connect a `Fragment`
 
 Version 0.1.1 *(2019-09-17)*
 ----------------------------
