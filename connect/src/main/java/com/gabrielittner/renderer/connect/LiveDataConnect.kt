@@ -14,7 +14,7 @@ fun <State, Action> Fragment.connect(
     model: LiveDataViewModel<State, Action>
 ) {
     val renderer = rendererFactory.create(this)
-    return connect(renderer, model)
+    return viewLifecycleOwner.connect(renderer, model)
 }
 
 fun <State, Action> FragmentActivity.connect(
