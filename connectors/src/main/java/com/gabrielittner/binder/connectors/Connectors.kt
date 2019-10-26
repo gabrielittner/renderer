@@ -15,7 +15,7 @@ fun <State, Action> Fragment.connect(
     model: ViewStateModel<State, Action>
 ) {
     val ui = uiFactory.create(this)
-    return connect(ui, model)
+    return viewLifecycleOwner.connect(ui, model)
 }
 
 fun <State, Action> FragmentActivity.connect(
