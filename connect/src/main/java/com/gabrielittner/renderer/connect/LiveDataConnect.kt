@@ -1,29 +1,9 @@
 package com.gabrielittner.renderer.connect
 
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.gabrielittner.renderer.Renderer
-import com.gabrielittner.renderer.ViewRenderer
-import com.gabrielittner.renderer.create
-
-fun <State, Action> Fragment.connect(
-    rendererFactory: ViewRenderer.Factory<State, Action>,
-    model: LiveDataViewModel<State, Action>
-) {
-    val renderer = rendererFactory.create(this)
-    return viewLifecycleOwner.connect(renderer, model)
-}
-
-fun <State, Action> FragmentActivity.connect(
-    rendererFactory: ViewRenderer.Factory<State, Action>,
-    model: LiveDataViewModel<State, Action>
-) {
-    val renderer = rendererFactory.create(this)
-    return connect(renderer, model)
-}
 
 fun <State, Action> LifecycleOwner.connect(
     renderer: Renderer<State, Action>,
