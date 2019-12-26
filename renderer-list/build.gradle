@@ -12,6 +12,6 @@ android {
 
 dependencies {
     api project(":renderer")
-    api "androidx.recyclerview:recyclerview:1.0.0"
+    api "androidx.recyclerview:recyclerview:1.1.0"
     api 'com.hannesdorfmann:adapterdelegates4-kotlin-dsl:4.2.0'
 }
