@@ -13,10 +13,7 @@ abstract class DelegatingRenderer<State, Action>(
 
     private val renderers = mutableListOf<Renderer<State, Action>>()
 
-    private val actionSubject = PublishSubject.create<Action>()
     private val disposables = CompositeDisposable()
-
-    final override val actions: Observable<Action> = actionSubject.hide()
 
     final override fun renderToView(state: State) {
         renderers.forEach {
@@ -31,7 +28,7 @@ abstract class DelegatingRenderer<State, Action>(
         val renderer = factory.create(rootView)
         val delegate: Renderer<State, Action> =
             RendererDelegate(renderer, transformer)
-        val disposable = delegate.actions.subscribe(actionSubject::onNext)
+        val disposable = delegate.actions.subscribe(this::sendAction)
         disposables.add(disposable)
         renderers.add(delegate)
     }
