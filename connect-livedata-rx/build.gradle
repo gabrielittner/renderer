@@ -11,6 +11,6 @@ android {
 }
 
 dependencies {
-    api project(":connect")
-    api "io.reactivex.rxjava2:rxjava:2.2.12"
+    api project(":connect-livedata")
+    api "io.reactivex.rxjava2:rxjava:2.2.15"
 }
