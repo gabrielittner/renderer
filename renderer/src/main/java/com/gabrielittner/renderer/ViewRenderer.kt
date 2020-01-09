@@ -1,10 +1,8 @@
 package com.gabrielittner.renderer
 
-import android.content.Context
+import android.view.LayoutInflater
 import android.view.View
-import androidx.annotation.IdRes
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
+import android.view.ViewGroup
 import io.reactivex.Observable
 
 abstract class ViewRenderer<State, Action>(
@@ -25,6 +23,17 @@ abstract class ViewRenderer<State, Action>(
 
 
     interface Factory<State, Action> {
-        fun create(rootView: View): Renderer<State, Action>
+        fun create(rootView: View): ViewRenderer<State, Action>
+    }
+
+    abstract class InflaterFactory<State, Action>(
+        val layoutId: Int
+    ) : Factory<State, Action> {
+
+        fun inflate(parent: ViewGroup): ViewRenderer<State, Action> {
+            val inflater = LayoutInflater.from(parent.context)
+            val view = inflater.inflate(layoutId, parent, false)
+            return create(view)
+        }
     }
 }
