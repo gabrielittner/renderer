@@ -1,6 +1,15 @@
 Change Log
 ==========
 
+Version 0.3.0 *(2020-01-17)*
+----------------------------
+
+- BREAKING: subclasses of `ViewRenderer` now need to override `viewActions` instead of `actions`
+- introduce `sendAction()` in `ViewRenderer` to avoid having to create subjects in implementations
+- make `ViewRenderer.state` not nullable
+- add `ViewRenderer.InflaterFactory` to tie a `ViewRenderer` to a XML layout
+- cleaned up connect API, restructured modules
+
 Version 0.2.1 *(2019-10-26)*
 ----------------------------
 

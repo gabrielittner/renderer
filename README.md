@@ -7,9 +7,9 @@ TODO
 Add a Gradle dependency:
 
 ```groovy
-implementation "com.gabrielittner.renderer:renderer:0.2.1"
-implementation "com.gabrielittner.renderer:connect-livedata:0.2.1"
-implementation "com.gabrielittner.renderer:connect-livedata-rx:0.2.1"
+implementation "com.gabrielittner.renderer:renderer:0.3.0"
+implementation "com.gabrielittner.renderer:connect-livedata:0.3.0"
+implementation "com.gabrielittner.renderer:connect-livedata-rx:0.3.0"
 ```
 
 Snapshots of the development version are available in [Sonatype's `snapshots` repository][snap].
@@ -21,8 +21,8 @@ These artifacts are still being tested. They might change significantly or be re
 Add a Gradle dependency:
 
 ```groovy
-implementation "com.gabrielittner.renderer:renderer-delegation:0.2.1"
-implementation "com.gabrielittner.renderer:renderer-list:0.2.1"
+implementation "com.gabrielittner.renderer:renderer-delegation:0.3.0"
+implementation "com.gabrielittner.renderer:renderer-list:0.3.0"
 ```
 
 Snapshots of the development version are available in [Sonatype's `snapshots` repository][snap].
