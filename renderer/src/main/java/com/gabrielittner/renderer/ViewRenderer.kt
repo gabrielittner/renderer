@@ -13,7 +13,7 @@ abstract class ViewRenderer<State, Action>(
     private val internalActions: PublishSubject<Action> = PublishSubject.create()
 
     private var internalState: State? = null
-    protected val state: State? get() = internalState
+    protected val state: State get() = internalState!!
 
     final override val actions: Observable<Action>
         get() = Observable.merge(internalActions, viewActions)
