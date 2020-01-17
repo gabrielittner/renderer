@@ -48,4 +48,25 @@ abstract class ViewRendererAdapter<State, Action>(
         }
         delegatesManager.addDelegate(delegate)
     }
+
+    protected inline fun <reified StateSubtype : State> addRendererDelegate(
+        factory: ViewRenderer.InflaterFactory<StateSubtype, Action>
+    ) {
+        val delegate = adapterDelegate<StateSubtype, State>(
+            factory.layoutId,
+            layoutInflater = { parent, _ ->
+                val renderer = factory.inflate(parent)
+                renderer.rootView.setTag(R.id.view_renderer_adapter_item_tag, renderer)
+                renderer.rootView
+            }
+        ) {
+             @Suppress("UNCHECKED_CAST")
+            val renderer = itemView.getTag(R.id.view_renderer_adapter_item_tag) as Renderer<State, Action>
+
+            bind {
+                renderer.render(item)
+            }
+        }
+        delegatesManager.addDelegate(delegate)
+    }
 }

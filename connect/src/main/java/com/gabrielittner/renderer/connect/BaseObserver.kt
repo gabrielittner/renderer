@@ -4,8 +4,14 @@ import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import io.reactivex.disposables.Disposable
 
-internal abstract class WhileStartedObserver : DefaultLifecycleObserver {
-    protected var disposable: Disposable? = null
+abstract class BaseObserver : DefaultLifecycleObserver {
+    private var disposable: Disposable? = null
+
+    override fun onStart(owner: LifecycleOwner) {
+        disposable = createDisposable(owner)
+    }
+
+    abstract fun createDisposable(owner: LifecycleOwner): Disposable
 
     override fun onStop(owner: LifecycleOwner) {
         disposable?.dispose()

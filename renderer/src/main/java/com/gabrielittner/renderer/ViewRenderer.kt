@@ -1,6 +1,8 @@
 package com.gabrielittner.renderer
 
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 
@@ -31,6 +33,17 @@ abstract class ViewRenderer<State, Action>(
 
 
     interface Factory<State, Action> {
-        fun create(rootView: View): Renderer<State, Action>
+        fun create(rootView: View): ViewRenderer<State, Action>
+    }
+
+    abstract class InflaterFactory<State, Action>(
+        val layoutId: Int
+    ) : Factory<State, Action> {
+
+        fun inflate(parent: ViewGroup): ViewRenderer<State, Action> {
+            val inflater = LayoutInflater.from(parent.context)
+            val view = inflater.inflate(layoutId, parent, false)
+            return create(view)
+        }
     }
 }

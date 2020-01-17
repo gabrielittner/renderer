@@ -8,8 +8,8 @@ Add a Gradle dependency:
 
 ```groovy
 implementation "com.gabrielittner.renderer:renderer:0.2.1"
-implementation "com.gabrielittner.renderer:connect:0.2.1"
-implementation "com.gabrielittner.renderer:connect-rx:0.2.1"
+implementation "com.gabrielittner.renderer:connect-livedata:0.2.1"
+implementation "com.gabrielittner.renderer:connect-livedata-rx:0.2.1"
 ```
 
 Snapshots of the development version are available in [Sonatype's `snapshots` repository][snap].
