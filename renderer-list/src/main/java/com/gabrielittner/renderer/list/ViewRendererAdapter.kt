@@ -1,5 +1,7 @@
 package com.gabrielittner.renderer.list
 
+import android.view.View
+import android.view.ViewGroup
 import androidx.annotation.CallSuper
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -52,9 +54,10 @@ abstract class ViewRendererAdapter<State, Action>(
     protected inline fun <reified StateSubtype : State> addRendererDelegate(
         factory: ViewRenderer.InflaterFactory<StateSubtype, Action>
     ) {
+        val viewTypeId = View.generateViewId()
         val delegate = adapterDelegate<StateSubtype, State>(
-            factory.layoutId,
-            layoutInflater = { parent, _ ->
+            viewTypeId,
+            layoutInflater = { parent: ViewGroup, _: Int ->
                 val renderer = factory.inflate(parent)
                 renderer.rootView.setTag(R.id.view_renderer_adapter_item_tag, renderer)
                 renderer.rootView
