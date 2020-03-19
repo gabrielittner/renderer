@@ -1,6 +1,15 @@
 Change Log
 ==========
 
+Version 0.4.0 *(2020-03-19)*
+----------------------------
+
+- change `ViewRenderer.InflaterFactory` to an interface
+- add `ViewRenderer.LayoutInflaterFactory` which matches the old `ViewRenderer.InflaterFactory`
+- add `ViewRenderer.ViewBindingFactory`
+- fix sources not getting published
+
+
 Version 0.3.0 *(2020-01-17)*
 ----------------------------
 
