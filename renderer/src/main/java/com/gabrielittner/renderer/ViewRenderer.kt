@@ -38,13 +38,20 @@ abstract class ViewRenderer<State, Action>(
     }
 
     interface InflaterFactory<State, Action> {
-        fun inflate(parent: ViewGroup): ViewRenderer<State, Action>
+        fun inflate(
+            inflater: LayoutInflater,
+            parent: ViewGroup?,
+            attachToRoot: Boolean
+        ): ViewRenderer<State, Action>
     }
 
     abstract class LayoutInflaterFactory<State, Action> : InflaterFactory<State, Action> {
-        final override fun inflate(parent: ViewGroup): ViewRenderer<State, Action> {
-            val inflater = LayoutInflater.from(parent.context)
-            val view = inflater.inflate(layoutId, parent, false)
+        final override fun inflate(
+            inflater: LayoutInflater,
+            parent: ViewGroup?,
+            attachToRoot: Boolean
+        ): ViewRenderer<State, Action> {
+            val view = inflater.inflate(layoutId, parent, attachToRoot)
             return create(view)
         }
 
@@ -54,13 +61,16 @@ abstract class ViewRenderer<State, Action>(
     }
 
     abstract class ViewBindingFactory<Binding : ViewBinding, State, Action> : InflaterFactory<State, Action> {
-        final override fun inflate(parent: ViewGroup): ViewRenderer<State, Action> {
-            val inflater = LayoutInflater.from(parent.context)
-            val binding = create(inflater, parent)
+        final override fun inflate(
+            inflater: LayoutInflater,
+            parent: ViewGroup?,
+            attachToRoot: Boolean
+        ): ViewRenderer<State, Action> {
+            val binding = create(inflater, parent, attachToRoot)
             return create(binding)
         }
 
-        protected abstract fun create(inflater: LayoutInflater, parent: ViewGroup?): Binding
+        protected abstract fun create(inflater: LayoutInflater, parent: ViewGroup?, attachToRoot: Boolean): Binding
 
         protected abstract fun create(binding: Binding): ViewRenderer<State, Action>
     }
