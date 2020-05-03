@@ -1,5 +1,6 @@
 package com.gabrielittner.renderer.list
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.CallSuper
@@ -58,7 +59,8 @@ abstract class ViewRendererAdapter<State, Action>(
         val delegate = adapterDelegate<StateSubtype, State>(
             viewTypeId,
             layoutInflater = { parent: ViewGroup, _: Int ->
-                val renderer = factory.inflate(parent)
+                val inflater = LayoutInflater.from(parent.context)
+                val renderer = factory.inflate(inflater, parent, false)
                 renderer.rootView.setTag(R.id.view_renderer_adapter_item_tag, renderer)
                 renderer.rootView
             }
