@@ -14,5 +14,5 @@ dependencies {
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     api "io.reactivex.rxjava2:rxjava:2.2.15"
     api "androidx.fragment:fragment-ktx:1.1.0"
-    api "androidx.databinding:viewbinding:3.6.0"
+    api "androidx.databinding:viewbinding:3.6.3"
 }
