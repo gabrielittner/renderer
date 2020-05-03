@@ -5,8 +5,11 @@ Version 0.4.0 *(2020-03-19)*
 ----------------------------
 
 - change `ViewRenderer.InflaterFactory` to an interface
+- make the parent `ViewGroup` passed into `InflaterFactory` nullable
+- add `LayoutInflater` and `attachToRoot: Boolean` to `InflaterFactory`
 - add `ViewRenderer.LayoutInflaterFactory` which matches the old `ViewRenderer.InflaterFactory`
 - add `ViewRenderer.ViewBindingFactory`
+- deprecate `RxViewModel` and it's `connect` methods
 - fix sources not getting published
 
 
