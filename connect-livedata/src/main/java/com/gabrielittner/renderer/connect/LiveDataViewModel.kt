@@ -15,7 +15,16 @@ fun <State, Action> Fragment.connect(
     renderer: Renderer<State, Action>,
     model: LiveDataViewModel<State, Action>
 ) {
-    viewLifecycleOwner.connect(renderer, model)
+    viewLifecycleOwnerLiveData.observe(this, object : Observer<LifecycleOwner> {
+        override fun onChanged(viewLifecycleOwner: LifecycleOwner?) {
+            if (viewLifecycleOwner != null) {
+                viewLifecycleOwner.connect(renderer, model)
+                // remove the observer after we got the first viewLifecycleOwner so that the
+                // reference to renderer can be freed once the Fragment view get's destroyed
+                viewLifecycleOwnerLiveData.removeObserver(this)
+            }
+        }
+    })
 }
 
 fun <State, Action> LifecycleOwner.connect(
