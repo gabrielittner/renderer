@@ -59,8 +59,7 @@ abstract class ViewRendererAdapter<State, Action>(
         val delegate = adapterDelegate<StateSubtype, State>(
             viewTypeId,
             layoutInflater = { parent: ViewGroup, _: Int ->
-                val inflater = LayoutInflater.from(parent.context)
-                val renderer = factory.inflate(inflater, parent, false)
+                val renderer = factory.inflate(parent)
                 renderer.rootView.setTag(R.id.view_renderer_adapter_item_tag, renderer)
                 renderer.rootView
             }
