@@ -21,13 +21,27 @@ abstract class DelegatingRenderer<State, Action>(
         }
     }
 
-    protected fun <InnerState : State> addRenderer(
+    protected fun addRenderer(
+        factory: Factory<State, Action>
+    ) {
+        addRenderer(factory, { it }, { it })
+    }
+
+    protected fun <InnerState> addRenderer(
         factory: Factory<InnerState, Action>,
-        transformer: (State) -> InnerState
+        stateTransformer: (State) -> InnerState
+    ) {
+        addRenderer(factory, stateTransformer, { it })
+    }
+
+    protected fun <InnerState, InnerAction> addRenderer(
+        factory: Factory<InnerState, InnerAction>,
+        stateTransformer: (State) -> InnerState,
+        actionTransformer: (InnerAction) -> Action
     ) {
         val renderer = factory.create(rootView)
         val delegate: Renderer<State, Action> =
-            RendererDelegate(renderer, transformer)
+            RendererDelegate(renderer, stateTransformer, actionTransformer)
         val disposable = delegate.actions.subscribe(this::sendAction)
         disposables.add(disposable)
         renderers.add(delegate)
