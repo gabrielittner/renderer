@@ -1,7 +1,16 @@
 Change Log
 ==========
 
-Version 0.4.0 *(2020-03-19)*
+Version 0.5.0 *(2020-05-10)*
+----------------------------
+
+- `Fragment.connect` is now callable from `onCreateView()`
+- make `ViewRenderer.LayoutInflaterFactory` layout id a ctor parameter
+- make `ViewRenderer.ViewBindingFactory` ViewBinding creator a ctor parameter
+- remove `LayoutInflater` and `attachToRoot: Boolean` from `InflaterFactory`
+- allow to map the type of actions in `DelegatingRenderer`
+
+Version 0.4.0 *(2020-05-03)*
 ----------------------------
 
 - change `ViewRenderer.InflaterFactory` to an interface
