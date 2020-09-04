@@ -17,6 +17,11 @@ abstract class ViewRenderer<State, Action>(
     val rootView: View
 ) : Renderer<State, Action> {
 
+    /**
+     * Create a [ViewRenderer] from a [ViewBinding].
+     */
+    constructor(binding: ViewBinding) : this(binding.root)
+
     private var internalState: State? = null
 
     /**
@@ -96,6 +101,11 @@ abstract class ViewRenderer<State, Action>(
          * Inflates a [View] in the given [parent] and then creates a [ViewRenderer] for it.
          */
         fun inflate(parent: ViewGroup): ViewRenderer<State, Action>
+
+        /**
+         * Inflates a [View] in the given [parent] and then creates a [ViewRenderer] for it.
+         */
+        fun inflate(inflater: LayoutInflater, parent: ViewGroup?): ViewRenderer<State, Action>
     }
 
     /**
@@ -110,6 +120,14 @@ abstract class ViewRenderer<State, Action>(
          */
         final override fun inflate(parent: ViewGroup): ViewRenderer<State, Action> {
             val inflater = LayoutInflater.from(parent.context)
+            return inflate(inflater, parent)
+        }
+
+        /**
+         * Inflates a [View] from [layoutId] in the given [parent] and then creates a [ViewRenderer]
+         * for it.
+         */
+        override fun inflate(inflater: LayoutInflater, parent: ViewGroup?): ViewRenderer<State, Action> {
             val view = inflater.inflate(layoutId, parent, false)
             return create(view)
         }
@@ -124,7 +142,7 @@ abstract class ViewRenderer<State, Action>(
      * An [InflaterFactory] that inflates the a [ViewBinding] using the given [bindingFactory].
      */
     abstract class ViewBindingFactory<Binding : ViewBinding, State, Action>(
-        private val bindingFactory: (LayoutInflater, ViewGroup, Boolean) -> Binding
+        private val bindingFactory: (LayoutInflater, ViewGroup?, Boolean) -> Binding
     ) : InflaterFactory<State, Action> {
         /**
          * Inflates a [ViewBinding] using [bindingFactory] in the given [parent] and then creates
@@ -132,6 +150,14 @@ abstract class ViewRenderer<State, Action>(
          */
         final override fun inflate(parent: ViewGroup): ViewRenderer<State, Action> {
             val inflater = LayoutInflater.from(parent.context)
+            return inflate(inflater, parent)
+        }
+
+        /**
+         * Inflates a [ViewBinding] using [bindingFactory] in the given [parent] and then creates
+         * a [ViewRenderer] for it.
+         */
+        final override fun inflate(inflater: LayoutInflater, parent: ViewGroup?): ViewRenderer<State, Action> {
             val binding = bindingFactory(inflater, parent, false)
             return create(binding)
         }
