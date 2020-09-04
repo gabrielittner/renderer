@@ -6,14 +6,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.gabrielittner.renderer.Renderer
 
-interface LiveDataViewModel<State, Action> {
+@Deprecated("Use RxLiveDataStateMachine instead")
+typealias LiveDataViewModel<State, Action> = LiveDataStateMachine<State, Action>
+
+interface LiveDataStateMachine<State, Action> {
     fun handleAction(action: Action)
     fun observe(): LiveData<State>
 }
 
 fun <State, Action> Fragment.connect(
     renderer: Renderer<State, Action>,
-    model: LiveDataViewModel<State, Action>
+    model: LiveDataStateMachine<State, Action>
 ) {
     viewLifecycleOwnerLiveData.observe(this, object : Observer<LifecycleOwner> {
         override fun onChanged(viewLifecycleOwner: LifecycleOwner?) {
@@ -29,7 +32,7 @@ fun <State, Action> Fragment.connect(
 
 fun <State, Action> LifecycleOwner.connect(
     renderer: Renderer<State, Action>,
-    model: LiveDataViewModel<State, Action>
+    model: LiveDataStateMachine<State, Action>
 ) {
     lifecycle.addObserver(RendererActionObserver(renderer, model::handleAction))
     model.observe().observe(this, Observer { renderer.render(it) })

@@ -5,15 +5,18 @@ import androidx.lifecycle.LifecycleOwner
 import com.gabrielittner.renderer.Renderer
 import io.reactivex.Observable
 
-@Deprecated("Use RxLiveDataViewModel instead")
-interface RxViewModel<State, Action> {
+@Deprecated("Use RxLiveDataStateMachine instead")
+typealias RxViewModel<State, Action> = RxStateMachine<State, Action>
+
+@Deprecated("Use RxLiveDataStateMachine instead")
+interface RxStateMachine<State, Action> {
     fun observe(events: Observable<Action>): Observable<State>
 }
 
 @Deprecated("Use RxLiveDataViewModel instead")
 fun <State, Action> Fragment.connect(
     renderer: Renderer<State, Action>,
-    model: RxViewModel<State, Action>
+    model: RxStateMachine<State, Action>
 ) {
     viewLifecycleOwner.connect(renderer, model)
 }
@@ -21,7 +24,7 @@ fun <State, Action> Fragment.connect(
 @Deprecated("Use RxLiveDataViewModel instead")
 fun <State, Action> LifecycleOwner.connect(
     renderer: Renderer<State, Action>,
-    model: RxViewModel<State, Action>
+    model: RxStateMachine<State, Action>
 ) {
     lifecycle.addObserver(RxWhileStartedObserver(renderer, model))
 }

@@ -5,7 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 
-abstract class RxLiveDataViewModel<State, Action> : LiveDataViewModel<State, Action> {
+@Deprecated("Use RxLiveDataStateMachine instead")
+typealias RxLiveDataViewModel<State, Action> = RxLiveDataStateMachine<State, Action>
+
+abstract class RxLiveDataStateMachine<State, Action> : LiveDataStateMachine<State, Action> {
 
     private val liveData: MutableLiveData<State> = MutableLiveData()
 

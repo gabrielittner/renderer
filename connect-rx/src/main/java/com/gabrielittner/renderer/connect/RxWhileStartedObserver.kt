@@ -6,7 +6,7 @@ import io.reactivex.disposables.Disposable
 
 internal class RxWhileStartedObserver<State, Action>(
     private val binder: Renderer<State, Action>,
-    private val model: RxViewModel<State, Action>
+    private val model: RxStateMachine<State, Action>
 ) : BaseObserver() {
 
     override fun createDisposable(owner: LifecycleOwner): Disposable {
