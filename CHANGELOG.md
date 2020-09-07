@@ -1,6 +1,13 @@
 Change Log
 ==========
 
+Version 0.6.0 *(2020-09-07)*
+----------------------------
+
+- rename all `...ViewModel` classes to `...StateMachine`
+- add deprecated typealiases for old names
+- add `ViewBinding` constructor overload to `ViewRenderer`
+
 Version 0.5.0 *(2020-05-10)*
 ----------------------------
 
