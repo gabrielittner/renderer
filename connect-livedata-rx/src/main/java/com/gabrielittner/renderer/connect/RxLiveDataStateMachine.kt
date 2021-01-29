@@ -8,7 +8,7 @@ import io.reactivex.subjects.PublishSubject
 @Deprecated("Use RxLiveDataStateMachine instead")
 typealias RxLiveDataViewModel<State, Action> = RxLiveDataStateMachine<State, Action>
 
-abstract class RxLiveDataStateMachine<State, Action> : LiveDataStateMachine<State, Action> {
+abstract class RxLiveDataStateMachine<State : Any, Action : Any> : LiveDataStateMachine<State, Action> {
 
     private val liveData: MutableLiveData<State> = MutableLiveData()
 

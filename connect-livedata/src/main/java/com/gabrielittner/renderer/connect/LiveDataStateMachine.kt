@@ -9,12 +9,12 @@ import com.gabrielittner.renderer.Renderer
 @Deprecated("Use RxLiveDataStateMachine instead")
 typealias LiveDataViewModel<State, Action> = LiveDataStateMachine<State, Action>
 
-interface LiveDataStateMachine<State, Action> {
+interface LiveDataStateMachine<State : Any, Action : Any> {
     fun handleAction(action: Action)
     fun observe(): LiveData<State>
 }
 
-fun <State, Action> Fragment.connect(
+fun <State : Any, Action : Any> Fragment.connect(
     renderer: Renderer<State, Action>,
     model: LiveDataStateMachine<State, Action>
 ) {
@@ -30,7 +30,7 @@ fun <State, Action> Fragment.connect(
     })
 }
 
-fun <State, Action> LifecycleOwner.connect(
+fun <State : Any, Action : Any> LifecycleOwner.connect(
     renderer: Renderer<State, Action>,
     model: LiveDataStateMachine<State, Action>
 ) {

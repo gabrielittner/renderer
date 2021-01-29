@@ -14,7 +14,7 @@ import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
 import io.reactivex.subjects.PublishSubject
 
-abstract class ViewRendererAdapter<State, Action>(
+abstract class ViewRendererAdapter<State : Any, Action : Any>(
     callback: DiffUtil.ItemCallback<State>
 ) : AsyncListDifferDelegationAdapter<State>(callback) {
 
@@ -38,22 +38,7 @@ abstract class ViewRendererAdapter<State, Action>(
         get() = itemView.getTag(R.id.view_renderer_adapter_item_tag) as Renderer<State, Action>
 
     protected inline fun <reified StateSubtype : State> addRendererDelegate(
-        layout: Int,
-        factory: ViewRenderer.Factory<StateSubtype, Action>
-    ) {
-        val delegate = adapterDelegate<StateSubtype, State>(layout) {
-            val renderer = factory.create(itemView)
-            itemView.setTag(R.id.view_renderer_adapter_item_tag, renderer)
-
-            bind {
-                renderer.render(item)
-            }
-        }
-        delegatesManager.addDelegate(delegate)
-    }
-
-    protected inline fun <reified StateSubtype : State> addRendererDelegate(
-        factory: ViewRenderer.InflaterFactory<StateSubtype, Action>
+        factory: ViewRenderer.Factory<*, out ViewRenderer<StateSubtype, Action>>
     ) {
         val viewTypeId = View.generateViewId()
         val delegate = adapterDelegate<StateSubtype, State>(

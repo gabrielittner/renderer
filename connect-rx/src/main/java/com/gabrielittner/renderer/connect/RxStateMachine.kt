@@ -14,7 +14,7 @@ interface RxStateMachine<State, Action> {
 }
 
 @Deprecated("Use RxLiveDataViewModel instead")
-fun <State, Action> Fragment.connect(
+fun <State : Any, Action : Any> Fragment.connect(
     renderer: Renderer<State, Action>,
     model: RxStateMachine<State, Action>
 ) {
@@ -22,7 +22,7 @@ fun <State, Action> Fragment.connect(
 }
 
 @Deprecated("Use RxLiveDataViewModel instead")
-fun <State, Action> LifecycleOwner.connect(
+fun <State : Any, Action : Any> LifecycleOwner.connect(
     renderer: Renderer<State, Action>,
     model: RxStateMachine<State, Action>
 ) {

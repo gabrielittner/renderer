@@ -4,7 +4,7 @@ import androidx.lifecycle.LifecycleOwner
 import com.gabrielittner.renderer.Renderer
 import io.reactivex.disposables.Disposable
 
-internal class RxWhileStartedObserver<State, Action>(
+internal class RxWhileStartedObserver<State : Any, Action : Any>(
     private val binder: Renderer<State, Action>,
     private val model: RxStateMachine<State, Action>
 ) : BaseObserver() {

@@ -1,2 +1,2 @@
-include ':renderer', ':renderer-delegation', ':renderer-list'
+include ':renderer', ':renderer-list'
 include ':connect', ':connect-livedata', ':connect-livedata-rx', ':connect-rx'

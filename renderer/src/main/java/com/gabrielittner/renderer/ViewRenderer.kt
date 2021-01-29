@@ -13,7 +13,7 @@ import io.reactivex.subjects.PublishSubject
  * [Renderer] interface this provides some convenience methods l
  */
 @UiThread
-abstract class ViewRenderer<State, Action>(
+abstract class ViewRenderer<State : Any, Action : Any>(
     val rootView: View
 ) : Renderer<State, Action> {
 

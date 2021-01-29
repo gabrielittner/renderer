@@ -7,7 +7,7 @@ import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.subjects.PublishSubject
 
-abstract class DelegatingRenderer<State, Action>(
+abstract class DelegatingRenderer<State : Any, Action : Any>(
     rootView: View
 ) : ViewRenderer<State, Action>(rootView) {
 
@@ -22,20 +22,20 @@ abstract class DelegatingRenderer<State, Action>(
     }
 
     protected fun addRenderer(
-        factory: Factory<State, Action>
+        factory: Factory<* , out ViewRenderer<State, Action>>
     ) {
-        addRenderer(factory, { it }, { it })
+        addRenderer<State, Action>(factory, { it }, { it })
     }
 
-    protected fun <InnerState> addRenderer(
-        factory: Factory<InnerState, Action>,
+    protected fun <InnerState : Any> addRenderer(
+        factory: Factory<* , out ViewRenderer<InnerState, Action>>,
         stateTransformer: (State) -> InnerState
     ) {
-        addRenderer(factory, stateTransformer, { it })
+        addRenderer<InnerState, Action>(factory, stateTransformer, { it })
     }
 
-    protected fun <InnerState, InnerAction> addRenderer(
-        factory: Factory<InnerState, InnerAction>,
+    protected fun <InnerState : Any, InnerAction : Any> addRenderer(
+        factory: Factory<* , out ViewRenderer<InnerState, Action>>,
         stateTransformer: (State) -> InnerState,
         actionTransformer: (InnerAction) -> Action
     ) {

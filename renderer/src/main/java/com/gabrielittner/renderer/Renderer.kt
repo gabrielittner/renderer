@@ -6,7 +6,7 @@ import io.reactivex.Observable
  * Represents a piece of UI that can [render] given [State] objects and emits [Action] objects
  * based on user [actions].
  */
-interface Renderer<State, Action> {
+interface Renderer<State : Any, Action : Any> {
     /**
      * Provides an [Observable] of user actions in the form of [Action] objects.
      */

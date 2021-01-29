@@ -4,7 +4,7 @@ import androidx.lifecycle.LifecycleOwner
 import com.gabrielittner.renderer.Renderer
 import io.reactivex.disposables.Disposable
 
-class RendererActionObserver<State, Action>(
+class RendererActionObserver<State : Any, Action : Any>(
     private val renderer: Renderer<State, Action>,
     private val actionHandler: (Action) -> Unit
 ) : BaseObserver() {
