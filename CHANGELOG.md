@@ -1,6 +1,15 @@
 Change Log
 ==========
 
+Version 0.7.0 *(2021-01-29)*
+----------------------------
+
+- removed `Factory`, `InflaterFactory` and `LayoutInflaterFactory`
+- renamed `ViewBindingFactory` to `Factory`
+- changed `ViewBindingFactory` signature from `<V : ViewBinding, State, Action> to <V : ViewBinding, R : ViewRenderer<State, Action>` to enable using Dagger's assisted inject
+- `State` and `Action` generics now use `Any` as bound
+- removed renderer-delegation module
+
 Version 0.6.0 *(2020-09-07)*
 ----------------------------
 
