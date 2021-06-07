@@ -35,5 +35,5 @@ fun <State : Any, Action : Any> LifecycleOwner.connect(
     model: LiveDataStateMachine<State, Action>
 ) {
     lifecycle.addObserver(RendererActionObserver(renderer, model::handleAction))
-    model.observe().observe(this, Observer { renderer.render(it) })
+    model.observe().observe(this, renderer::render)
 }
