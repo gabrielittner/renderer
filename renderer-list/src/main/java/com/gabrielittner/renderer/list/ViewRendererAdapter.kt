@@ -38,13 +38,17 @@ abstract class ViewRendererAdapter<State : Any, Action : Any>(
         get() = itemView.getTag(R.id.view_renderer_adapter_item_tag) as Renderer<State, Action>
 
     protected inline fun <reified StateSubtype : State> addRendererDelegate(
-        factory: ViewRenderer.Factory<*, out ViewRenderer<StateSubtype, Action>>
+        factory: ViewRenderer.Factory<*, out ViewRenderer<StateSubtype, Action>>,
+        noinline on: (item: StateSubtype, items: List<State>, position: Int) -> Boolean = { _, _, _ -> true },
+        noinline layoutInflater: (parent: ViewGroup) -> LayoutInflater = { LayoutInflater.from(it.context) },
     ) {
         val viewTypeId = View.generateViewId()
         val delegate = adapterDelegate<StateSubtype, State>(
             viewTypeId,
+            on = { item, items, position -> item is StateSubtype && on(item, items, position) },
             layoutInflater = { parent: ViewGroup, _: Int ->
-                val renderer = factory.inflate(parent)
+                val inflater = layoutInflater(parent)
+                val renderer = factory.inflate(inflater, parent)
                 renderer.rootView.setTag(R.id.view_renderer_adapter_item_tag, renderer)
                 renderer.rootView
             }
