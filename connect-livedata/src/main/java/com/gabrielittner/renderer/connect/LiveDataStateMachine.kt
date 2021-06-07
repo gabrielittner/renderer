@@ -6,9 +6,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.gabrielittner.renderer.Renderer
 
-@Deprecated("Use RxLiveDataStateMachine instead")
-typealias LiveDataViewModel<State, Action> = LiveDataStateMachine<State, Action>
-
 interface LiveDataStateMachine<State : Any, Action : Any> {
     fun handleAction(action: Action)
     fun observe(): LiveData<State>
