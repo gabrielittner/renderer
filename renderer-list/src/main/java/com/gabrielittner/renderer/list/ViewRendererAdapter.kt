@@ -10,27 +10,33 @@ import com.gabrielittner.renderer.Renderer
 import com.gabrielittner.renderer.ViewRenderer
 import com.hannesdorfmann.adapterdelegates4.AsyncListDifferDelegationAdapter
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegate
-import io.reactivex.Observable
-import io.reactivex.disposables.Disposable
-import io.reactivex.subjects.PublishSubject
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 abstract class ViewRendererAdapter<State : Any, Action : Any>(
     callback: DiffUtil.ItemCallback<State>
 ) : AsyncListDifferDelegationAdapter<State>(callback) {
 
-    private val actionSubject = PublishSubject.create<Action>()
-    private val disposables = mutableMapOf<RecyclerView.ViewHolder, Disposable>()
+    private val scope = MainScope()
+    private val actions = MutableSharedFlow<Action>(extraBufferCapacity = Int.MAX_VALUE)
+    private val jobs = mutableMapOf<RecyclerView.ViewHolder, Job>()
 
-    fun actions(): Observable<Action> = actionSubject.hide()
+    fun actions(): Flow<Action> = actions
 
     @CallSuper
     override fun onViewAttachedToWindow(holder: RecyclerView.ViewHolder) {
-        disposables[holder] = holder.renderer.actions.subscribe(actionSubject::onNext)
+        jobs[holder] = scope.launch {
+            holder.renderer.actions.collect(actions::emit)
+        }
     }
 
     @CallSuper
     override fun onViewDetachedFromWindow(holder: RecyclerView.ViewHolder) {
-        disposables.remove(holder)!!.dispose()
+        jobs.remove(holder)!!.cancel()
     }
 
     @Suppress("UNCHECKED_CAST")
@@ -51,6 +57,9 @@ abstract class ViewRendererAdapter<State : Any, Action : Any>(
                 val renderer = factory.inflate(inflater, parent)
                 renderer.rootView.setTag(R.id.view_renderer_adapter_item_tag, renderer)
                 renderer.rootView
+            },
+            on = { item, items, position ->
+                item is StateSubtype && on(item, items, position)
             }
         ) {
              @Suppress("UNCHECKED_CAST")

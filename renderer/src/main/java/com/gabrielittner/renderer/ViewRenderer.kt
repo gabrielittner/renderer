@@ -6,7 +6,10 @@ import android.view.ViewGroup
 import androidx.annotation.UiThread
 import androidx.viewbinding.ViewBinding
 import io.reactivex.Observable
-import io.reactivex.subjects.PublishSubject
+import kotlinx.coroutines.flow.merge
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.rx2.asFlow
 
 /**
  * A base class for [Renderer] implementations that use Android [View]. Compared to the simple
@@ -37,14 +40,40 @@ abstract class ViewRenderer<State : Any, Action : Any>(
         return internalState!!
     }
 
-    private val internalActions: PublishSubject<Action> = PublishSubject.create()
+    private val sentActions = MutableSharedFlow<Action>(extraBufferCapacity = Int.MAX_VALUE)
+    private val allActions = mutableListOf<Flow<Action>>(sentActions)
+    private var allowedToAddActionFlows = true
 
     /**
      * See [Renderer.actions]. Implementations should override [viewActions] instead or use
      * [sendAction].
      */
-    final override val actions: Observable<Action>
-        get() = Observable.merge(internalActions, viewActions)
+    final override val actions: Flow<Action>
+        get() {
+            allowedToAddActionFlows = false
+
+            var actions: List<Flow<Action>> = allActions
+
+            val rxActions = viewActions
+            if (rxActions != null) {
+                actions = actions + rxActions.asFlow()
+            }
+
+            return actions.merge()
+        }
+
+    /**
+     * Merges the given [flow] into the general [Action] [Flow] returned by [actions]. Only allowed
+     * to be called before [actions] was called once.
+     */
+    protected fun addActionFlow(flow: Flow<Action>) {
+        check(allowedToAddActionFlows) {
+            "addActionFlow is only allowed to be called before actions was called"
+        }
+
+        allActions += flow
+    }
+
 
     /**
      * See [Renderer.actions].
@@ -58,7 +87,8 @@ abstract class ViewRenderer<State : Any, Action : Any>(
      * )
      * ```
      */
-    protected open val viewActions: Observable<Action> = Observable.never()
+    @Deprecated("Use sendAction or addActionFlow instead")
+    protected open val viewActions: Observable<Action>? = null
 
     /**
      * Emits the given [action] to observers of the [actions] `Observable`. The main use case for
@@ -66,7 +96,7 @@ abstract class ViewRenderer<State : Any, Action : Any>(
      * Renderer, for example a dialog click.
      */
     protected fun sendAction(action: Action) {
-        internalActions.onNext(action)
+        check(sentActions.tryEmit(action))
     }
 
     /**
