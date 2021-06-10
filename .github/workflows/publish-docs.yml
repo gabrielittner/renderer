@@ -36,6 +36,14 @@ jobs:
       - name: Copy docs
         run: |
           cp README.md docs/index.md
+          mkdir -p docs/Javadoc/connect-livedata
+          cp -R connect-livedata/build/dokka/gfm/. docs/Javadoc/connect-livedata/
+          mkdir -p docs/Javadoc/connect-livedata
+          cp -R connect-livedata-rx/build/dokka/gfm/. docs/Javadoc/connect-livedata-rx/
+          mkdir -p docs/Javadoc/renderer
+          cp -R renderer/build/dokka/gfm/. docs/Javadoc/renderer/
+          mkdir -p docs/Javadoc/renderer-list
+          cp -R renderer-list/build/dokka/gfm/. docs/Javadoc/renderer-list/
 
       - name: Deploy MkDocs
         run: |
