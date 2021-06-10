@@ -1,0 +1,10 @@
+$dokka.format:gfm-v1
+$dokka.linkExtension:md
+$dokka.location:com.gabrielittner.renderer.list////PointingToDeclaration/renderer-list/com.gabrielittner.renderer.list/index.md
+$dokka.location:com.gabrielittner.renderer.list/ViewRendererAdapter///PointingToDeclaration/renderer-list/com.gabrielittner.renderer.list/-view-renderer-adapter/index.md
+$dokka.location:com.gabrielittner.renderer.list/ViewRendererAdapter/ViewRendererAdapter/#androidx.recyclerview.widget.DiffUtil.ItemCallback[TypeParam(bounds=[kotlin.Any])]/PointingToDeclaration/renderer-list/com.gabrielittner.renderer.list/-view-renderer-adapter/-view-renderer-adapter.md
+$dokka.location:com.gabrielittner.renderer.list/ViewRendererAdapter/actions/#/PointingToDeclaration/renderer-list/com.gabrielittner.renderer.list/-view-renderer-adapter/actions.md
+$dokka.location:com.gabrielittner.renderer.list/ViewRendererAdapter/onViewAttachedToWindow/#androidx.recyclerview.widget.RecyclerView.ViewHolder/PointingToDeclaration/renderer-list/com.gabrielittner.renderer.list/-view-renderer-adapter/on-view-attached-to-window.md
+$dokka.location:com.gabrielittner.renderer.list/ViewRendererAdapter/onViewDetachedFromWindow/#androidx.recyclerview.widget.RecyclerView.ViewHolder/PointingToDeclaration/renderer-list/com.gabrielittner.renderer.list/-view-renderer-adapter/on-view-detached-from-window.md
+com.gabrielittner.renderer.list
+

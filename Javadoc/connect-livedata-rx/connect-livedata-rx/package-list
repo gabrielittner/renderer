@@ -1,0 +1,9 @@
+$dokka.format:gfm-v1
+$dokka.linkExtension:md
+$dokka.location:com.gabrielittner.renderer.connect////PointingToDeclaration/connect-livedata-rx/com.gabrielittner.renderer.connect/index.md
+$dokka.location:com.gabrielittner.renderer.connect/RxLiveDataStateMachine///PointingToDeclaration/connect-livedata-rx/com.gabrielittner.renderer.connect/-rx-live-data-state-machine/index.md
+$dokka.location:com.gabrielittner.renderer.connect/RxLiveDataStateMachine/RxLiveDataStateMachine/#/PointingToDeclaration/connect-livedata-rx/com.gabrielittner.renderer.connect/-rx-live-data-state-machine/-rx-live-data-state-machine.md
+$dokka.location:com.gabrielittner.renderer.connect/RxLiveDataStateMachine/handleAction/#TypeParam(bounds=[kotlin.Any])/PointingToDeclaration/connect-livedata-rx/com.gabrielittner.renderer.connect/-rx-live-data-state-machine/handle-action.md
+$dokka.location:com.gabrielittner.renderer.connect/RxLiveDataStateMachine/observe/#/PointingToDeclaration/connect-livedata-rx/com.gabrielittner.renderer.connect/-rx-live-data-state-machine/observe.md
+com.gabrielittner.renderer.connect
+

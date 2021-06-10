@@ -1,0 +1,21 @@
+$dokka.format:gfm-v1
+$dokka.linkExtension:md
+$dokka.location:com.gabrielittner.renderer////PointingToDeclaration/renderer/com.gabrielittner.renderer/index.md
+$dokka.location:com.gabrielittner.renderer//bind/com.gabrielittner.renderer.ViewRenderer[*,*]#kotlin.Int/PointingToDeclaration/renderer/com.gabrielittner.renderer/bind.md
+$dokka.location:com.gabrielittner.renderer//bindOptional/com.gabrielittner.renderer.ViewRenderer[*,*]#kotlin.Int/PointingToDeclaration/renderer/com.gabrielittner.renderer/bind-optional.md
+$dokka.location:com.gabrielittner.renderer//context/com.gabrielittner.renderer.ViewRenderer[*,*]#/PointingToDeclaration/renderer/com.gabrielittner.renderer/context.md
+$dokka.location:com.gabrielittner.renderer/Renderer///PointingToDeclaration/renderer/com.gabrielittner.renderer/-renderer/index.md
+$dokka.location:com.gabrielittner.renderer/Renderer/actions/#/PointingToDeclaration/renderer/com.gabrielittner.renderer/-renderer/actions.md
+$dokka.location:com.gabrielittner.renderer/Renderer/render/#TypeParam(bounds=[kotlin.Any])/PointingToDeclaration/renderer/com.gabrielittner.renderer/-renderer/render.md
+$dokka.location:com.gabrielittner.renderer/ViewRenderer.Factory///PointingToDeclaration/renderer/com.gabrielittner.renderer/-view-renderer/-factory/index.md
+$dokka.location:com.gabrielittner.renderer/ViewRenderer.Factory/Factory/#kotlin.Function3[android.view.LayoutInflater,android.view.ViewGroup?,kotlin.Boolean,TypeParam(bounds=[androidx.viewbinding.ViewBinding])]/PointingToDeclaration/renderer/com.gabrielittner.renderer/-view-renderer/-factory/-factory.md
+$dokka.location:com.gabrielittner.renderer/ViewRenderer.Factory/inflate/#android.view.LayoutInflater#android.view.ViewGroup?/PointingToDeclaration/renderer/com.gabrielittner.renderer/-view-renderer/-factory/inflate.md
+$dokka.location:com.gabrielittner.renderer/ViewRenderer.Factory/inflate/#android.view.ViewGroup/PointingToDeclaration/renderer/com.gabrielittner.renderer/-view-renderer/-factory/inflate.md
+$dokka.location:com.gabrielittner.renderer/ViewRenderer///PointingToDeclaration/renderer/com.gabrielittner.renderer/-view-renderer/index.md
+$dokka.location:com.gabrielittner.renderer/ViewRenderer/ViewRenderer/#android.view.View/PointingToDeclaration/renderer/com.gabrielittner.renderer/-view-renderer/-view-renderer.md
+$dokka.location:com.gabrielittner.renderer/ViewRenderer/ViewRenderer/#androidx.viewbinding.ViewBinding/PointingToDeclaration/renderer/com.gabrielittner.renderer/-view-renderer/-view-renderer.md
+$dokka.location:com.gabrielittner.renderer/ViewRenderer/actions/#/PointingToDeclaration/renderer/com.gabrielittner.renderer/-view-renderer/actions.md
+$dokka.location:com.gabrielittner.renderer/ViewRenderer/render/#TypeParam(bounds=[kotlin.Any])/PointingToDeclaration/renderer/com.gabrielittner.renderer/-view-renderer/render.md
+$dokka.location:com.gabrielittner.renderer/ViewRenderer/rootView/#/PointingToDeclaration/renderer/com.gabrielittner.renderer/-view-renderer/root-view.md
+com.gabrielittner.renderer
+
