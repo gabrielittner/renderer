@@ -1,6 +1,22 @@
 Change Log
 ==========
 
+
+Version 0.8.0 *(2021-06-10)*
+----------------------------
+
+- BREAKING: change `Renderer` to be `Flow` based
+    - `actions` now returns a `Flow<Action>`
+    - `viewActions` in `ViewRenderer` is still `Observable` based and will be deprecated in a future  release
+    - to merge other `Flow<Action>` into `actions` you can call `addActionFlow`
+    - `ViewRendererAdapter.actions()` also returns a `Flow<Action>` which can be used with the `addActionFlow` method mentioned above
+- `renderer-list`: support `on` and `layoutInflater` parameters from adapter delegates
+- removed deprecated `LiveDataViewModel` and `RxLiveDataViewModel` typealiases
+- removed base `connect` module (all functionality was moved directly into the main `connect-livedata` artifact)
+- removed experimental `renderer-delegation` artifact
+- removed deprecated `connect-rx` artifact
+
+
 Version 0.7.0 *(2021-01-29)*
 ----------------------------
 
