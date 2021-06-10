@@ -1,0 +1,36 @@
+site_name: Renderer
+site_url: https://gabrielittner.github.io/renderer/
+repo_name: Renderer
+repo_url: https://github.com/gabrielittner/renderer
+site_description: "Renderer"
+site_author: Gabriel Ittner
+remote_branch: gh-pages
+
+copyright: 'Copyright &copy; 2021 Gabriel Ittner.'
+
+theme:
+  name: 'material'
+  palette:
+    primary: 'black'
+    accent: 'white'
+
+extra_css:
+  - 'css/app.css'
+
+markdown_extensions:
+  - smarty
+  - codehilite:
+      guess_lang: false
+  - footnotes
+  - meta
+  - toc:
+      permalink: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tilde
+  - tables
