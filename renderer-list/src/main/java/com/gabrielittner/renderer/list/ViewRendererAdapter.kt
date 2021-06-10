@@ -57,9 +57,6 @@ abstract class ViewRendererAdapter<State : Any, Action : Any>(
                 val renderer = factory.inflate(inflater, parent)
                 renderer.rootView.setTag(R.id.view_renderer_adapter_item_tag, renderer)
                 renderer.rootView
-            },
-            on = { item, items, position ->
-                item is StateSubtype && on(item, items, position)
             }
         ) {
              @Suppress("UNCHECKED_CAST")
