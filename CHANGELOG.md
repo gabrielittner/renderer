@@ -1,6 +1,14 @@
 Change Log
 ==========
 
+Version 0.9.0 *(2021-06-16)*
+----------------------------
+
+- add new `connect-flow` artifact
+  - `connect` method to use Freeletics MAD `StateMachine` with `Renderer`
+  - `SimpleStateMachine` implementation that is a `LiveDataStateMachine` like implementation for the above mentioned `StateMachine`
+- add new `connect-flow-rx`
+  - `SimpleStateMachine` implementation that is a `RxLiveDataStateMachine` like implementation for `StateMachine`
 
 Version 0.8.0 *(2021-06-10)*
 ----------------------------
