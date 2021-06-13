@@ -36,6 +36,10 @@ jobs:
       - name: Copy docs
         run: |
           cp README.md docs/index.md
+          mkdir -p docs/Javadoc/connect-flow
+          cp -R connect-flow/build/dokka/gfm/. docs/Javadoc/connect-flow/
+          mkdir -p docs/Javadoc/connect-flow
+          cp -R connect-flow-rx/build/dokka/gfm/. docs/Javadoc/connect-flow-rx/
           mkdir -p docs/Javadoc/connect-livedata
           cp -R connect-livedata/build/dokka/gfm/. docs/Javadoc/connect-livedata/
           mkdir -p docs/Javadoc/connect-livedata

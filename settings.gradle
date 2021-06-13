@@ -1,2 +1,3 @@
 include ':renderer', ':renderer-list'
 include ':connect-livedata', ':connect-livedata-rx'
+include ':connect-flow', ':connect-flow-rx'
