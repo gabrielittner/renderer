@@ -1,0 +1,9 @@
+$dokka.format:gfm-v1
+$dokka.linkExtension:md
+$dokka.location:com.gabrielittner.renderer.connect////PointingToDeclaration/connect-flow-rx/com.gabrielittner.renderer.connect/index.md
+$dokka.location:com.gabrielittner.renderer.connect/RxSimpleStateMachine///PointingToDeclaration/connect-flow-rx/com.gabrielittner.renderer.connect/-rx-simple-state-machine/index.md
+$dokka.location:com.gabrielittner.renderer.connect/RxSimpleStateMachine/RxSimpleStateMachine/#/PointingToDeclaration/connect-flow-rx/com.gabrielittner.renderer.connect/-rx-simple-state-machine/-rx-simple-state-machine.md
+$dokka.location:com.gabrielittner.renderer.connect/RxSimpleStateMachine/dispatch/#TypeParam(bounds=[kotlin.Any])/PointingToDeclaration/connect-flow-rx/com.gabrielittner.renderer.connect/-rx-simple-state-machine/dispatch.md
+$dokka.location:com.gabrielittner.renderer.connect/RxSimpleStateMachine/state/#/PointingToDeclaration/connect-flow-rx/com.gabrielittner.renderer.connect/-rx-simple-state-machine/state.md
+com.gabrielittner.renderer.connect
+

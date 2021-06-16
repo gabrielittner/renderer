@@ -1,0 +1,11 @@
+$dokka.format:gfm-v1
+$dokka.linkExtension:md
+$dokka.location:com.gabrielittner.renderer.connect////PointingToDeclaration/connect-flow/com.gabrielittner.renderer.connect/index.md
+$dokka.location:com.gabrielittner.renderer.connect//connect/androidx.fragment.app.Fragment#com.gabrielittner.renderer.Renderer[TypeParam(bounds=[kotlin.Any]),TypeParam(bounds=[kotlin.Any])]#com.freeletics.mad.statemachine.StateMachine[TypeParam(bounds=[kotlin.Any]),TypeParam(bounds=[kotlin.Any])]/PointingToDeclaration/connect-flow/com.gabrielittner.renderer.connect/connect.md
+$dokka.location:com.gabrielittner.renderer.connect//connect/androidx.lifecycle.LifecycleOwner#com.gabrielittner.renderer.Renderer[TypeParam(bounds=[kotlin.Any]),TypeParam(bounds=[kotlin.Any])]#com.freeletics.mad.statemachine.StateMachine[TypeParam(bounds=[kotlin.Any]),TypeParam(bounds=[kotlin.Any])]/PointingToDeclaration/connect-flow/com.gabrielittner.renderer.connect/connect.md
+$dokka.location:com.gabrielittner.renderer.connect/SimpleStateMachine///PointingToDeclaration/connect-flow/com.gabrielittner.renderer.connect/-simple-state-machine/index.md
+$dokka.location:com.gabrielittner.renderer.connect/SimpleStateMachine/SimpleStateMachine/#/PointingToDeclaration/connect-flow/com.gabrielittner.renderer.connect/-simple-state-machine/-simple-state-machine.md
+$dokka.location:com.gabrielittner.renderer.connect/SimpleStateMachine/dispatch/#TypeParam(bounds=[kotlin.Any])/PointingToDeclaration/connect-flow/com.gabrielittner.renderer.connect/-simple-state-machine/dispatch.md
+$dokka.location:com.gabrielittner.renderer.connect/SimpleStateMachine/state/#/PointingToDeclaration/connect-flow/com.gabrielittner.renderer.connect/-simple-state-machine/state.md
+com.gabrielittner.renderer.connect
+
