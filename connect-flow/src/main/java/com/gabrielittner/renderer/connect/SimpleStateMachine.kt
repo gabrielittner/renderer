@@ -1,16 +1,18 @@
 package com.gabrielittner.renderer.connect
 
 import com.freeletics.mad.statemachine.StateMachine
-import kotlinx.coroutines.channels.BufferOverflow.DROP_OLDEST
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 
-abstract class SimpleStateMachine<State : Any, Action : Any> : StateMachine<State, Action> {
+abstract class SimpleStateMachine<State : Any, Action : Any>(
+    initialState: State
+) : StateMachine<State, Action> {
 
-    private val internalState = MutableSharedFlow<State>(replay = 1, onBufferOverflow = DROP_OLDEST)
+    private val internalState = MutableStateFlow(initialState)
 
-    override val state: Flow<State> = internalState.distinctUntilChanged()
+    override val state: StateFlow<State> = internalState
 
     private val internalActions = MutableSharedFlow<Action>()
 
