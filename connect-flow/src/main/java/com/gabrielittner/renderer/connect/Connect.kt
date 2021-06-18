@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer
 import com.freeletics.mad.statemachine.StateMachine
 import com.gabrielittner.renderer.Renderer
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 fun <State : Any, Action : Any> Fragment.connect(
     renderer: Renderer<State, Action>,
@@ -28,7 +29,7 @@ fun <State : Any, Action : Any> LifecycleOwner.connect(
     stateMachine: StateMachine<State, Action>
 ) {
     lifecycle.addObserver(WhileStartedObserver {
-        stateMachine.state.collect { renderer.render(it) }
-        renderer.actions.collect { stateMachine.dispatch(it) }
+        it.launch { stateMachine.state.collect { renderer.render(it) } }
+        it.launch { renderer.actions.collect { stateMachine.dispatch(it) } }
     })
 }

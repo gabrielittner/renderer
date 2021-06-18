@@ -9,16 +9,14 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
 internal class WhileStartedObserver(
-    private val launchBlock: suspend () -> Unit
+    private val onScopeCreated: (CoroutineScope) -> Unit
 ) : DefaultLifecycleObserver {
 
     private var currentScope: CoroutineScope? = null
 
     override fun onStart(owner: LifecycleOwner) {
         currentScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
-        currentScope!!.launch {
-            launchBlock()
-        }
+        onScopeCreated(currentScope!!)
     }
 
     override fun onStop(owner: LifecycleOwner) {
