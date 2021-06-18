@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+Version 0.10.1 *(2021-06-18)*
+----------------------------
+
+- fix `connect()` method of `connect-flow` not emitting any actions
+
 Version 0.10.0 *(2021-06-18)*
 ----------------------------
 
