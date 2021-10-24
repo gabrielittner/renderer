@@ -1,15 +1,23 @@
 Change Log
 ==========
 
+Version 0.10.2 *(2021-10-24)*
+----------------------------
+
+- build against updated `StateMachine` interface
+
+
 Version 0.10.1 *(2021-06-18)*
 ----------------------------
 
 - fix `connect()` method of `connect-flow` not emitting any actions
 
+
 Version 0.10.0 *(2021-06-18)*
 ----------------------------
 
 - `SimpleStateMachine` and `RxSimpleStateMachine` now return a `StateFlow` and therefore require an `initialState` constructor parameter
+
 
 Version 0.9.0 *(2021-06-16)*
 ----------------------------
@@ -19,6 +27,7 @@ Version 0.9.0 *(2021-06-16)*
   - `SimpleStateMachine` implementation that is a `LiveDataStateMachine` like implementation for the above mentioned `StateMachine`
 - add new `connect-flow-rx`
   - `RxSimpleStateMachine` implementation that is a `RxLiveDataStateMachine` like implementation for `StateMachine`
+
 
 Version 0.8.0 *(2021-06-10)*
 ----------------------------
