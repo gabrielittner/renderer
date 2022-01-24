@@ -1,6 +1,13 @@
 Change Log
 ==========
 
+Version 0.11.2 *(2022-01-24)*
+----------------------------
+
+- remove `StateMachine` base classes
+- remove all `connect` artifacts except for `connect-flow` which is now called `connect`
+
+
 Version 0.10.2 *(2021-10-24)*
 ----------------------------
 

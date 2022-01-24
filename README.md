@@ -9,10 +9,7 @@ Add a Gradle dependency:
 ```groovy
 implementation "com.gabrielittner.renderer:renderer:0.10.2"
 implementation "com.gabrielittner.renderer:renderer-list:0.10.2"
-implementation "com.gabrielittner.renderer:connect-flow:0.10.2"
-implementation "com.gabrielittner.renderer:connect-flow-rx:0.10.2"
-implementation "com.gabrielittner.renderer:connect-livedata:0.10.2"
-implementation "com.gabrielittner.renderer:connect-livedata-rx:0.10.2"
+implementation "com.gabrielittner.renderer:connect:0.10.2"
 ```
 
 Snapshots of the development version are available in [Sonatype's `snapshots` repository][snap].
