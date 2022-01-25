@@ -7,9 +7,9 @@ TODO
 Add a Gradle dependency:
 
 ```groovy
-implementation "com.gabrielittner.renderer:renderer:0.10.2"
-implementation "com.gabrielittner.renderer:renderer-list:0.10.2"
-implementation "com.gabrielittner.renderer:connect:0.10.2"
+implementation "com.gabrielittner.renderer:renderer:0.11.0"
+implementation "com.gabrielittner.renderer:renderer-list:0.11.0"
+implementation "com.gabrielittner.renderer:connect:0.11.0"
 ```
 
 Snapshots of the development version are available in [Sonatype's `snapshots` repository][snap].

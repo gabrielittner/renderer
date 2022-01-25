@@ -1,7 +1,7 @@
 Change Log
 ==========
 
-Version 0.11.2 *(2022-01-24)*
+Version 0.11.0 *(2022-01-25)*
 ----------------------------
 
 - remove `StateMachine` base classes
