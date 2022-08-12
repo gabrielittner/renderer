@@ -1,19 +1,21 @@
-apply plugin: "com.android.library"
-apply plugin: "org.jetbrains.kotlin.android"
-apply plugin: 'org.jetbrains.dokka'
-apply plugin: "com.vanniktech.maven.publish"
+plugins {
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.dokka)
+    alias(libs.plugins.publish)
+}
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion libs.versions.android.compile.get().toInteger()
 
     defaultConfig {
-        minSdkVersion 21
+        minSdkVersion libs.versions.android.min.get().toInteger()
     }
 }
 
 dependencies {
     api project(":renderer")
-    api 'com.freeletics.mad:state-machine:0.3.0-alpha10'
-    api 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0'
-    api "androidx.lifecycle:lifecycle-common-java8:2.3.1"
+    api libs.mad.statemachine
+    api libs.coroutines.core
+    api libs.androidx.lifecycle.common
 }

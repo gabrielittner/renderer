@@ -1,7 +1,9 @@
-apply plugin: "com.android.library"
-apply plugin: "org.jetbrains.kotlin.android"
-apply plugin: 'org.jetbrains.dokka'
-apply plugin: "com.vanniktech.maven.publish"
+plugins {
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.dokka)
+    alias(libs.plugins.publish)
+}
 
 android {
     compileSdkVersion 29
@@ -13,6 +15,6 @@ android {
 
 dependencies {
     api project(":renderer")
-    api "androidx.recyclerview:recyclerview:1.2.1"
-    api 'com.hannesdorfmann:adapterdelegates4-kotlin-dsl:4.3.0'
+    api libs.androidx.recyclerview
+    api libs.adapterdelegates
 }
