@@ -38,7 +38,7 @@ abstract class ComposeRenderer<State : Any, Action : Any>(
         /**
          * Creates a [ComposeRenderer] for [parent].
          */
-        override fun inflate(parent: ViewGroup): R {
+        final override fun inflate(parent: ViewGroup): R {
             val view = ComposeView(parent.context)
             return create(view)
         }

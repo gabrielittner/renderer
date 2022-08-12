@@ -133,7 +133,7 @@ abstract class ViewRenderer<State : Any, Action : Any>(
          * Inflates a [ViewBinding] using [bindingFactory] in the given [parent] and then creates
          * a [ViewRenderer] for it.
          */
-        override fun inflate(parent: ViewGroup): R {
+        final override fun inflate(parent: ViewGroup): R {
             val inflater = LayoutInflater.from(parent.context)
             return inflate(inflater, parent)
         }
