@@ -12,7 +12,7 @@ androidx-recyclerview = "1.2.1"
 
 mad = "0.7.2"
 
-adapterdelegates = "4.1.0"
+adapterdelegates = "4.3.2"
 
 rxjava = "2.2.21"
 
