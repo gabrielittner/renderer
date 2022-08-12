@@ -29,7 +29,7 @@ abstract class ViewRendererAdapter<State : Any, Action : Any>(
     @CallSuper
     override fun onViewAttachedToWindow(holder: RecyclerView.ViewHolder) {
         jobs[holder] = scope.launch {
-            holder.renderer.actions.collect(actions::emit)
+            holder.renderer?.actions?.collect(actions::emit)
         }
     }
 
@@ -39,8 +39,8 @@ abstract class ViewRendererAdapter<State : Any, Action : Any>(
     }
 
     @Suppress("UNCHECKED_CAST")
-    private val RecyclerView.ViewHolder.renderer: Renderer<State, Action>
-        get() = itemView.getTag(R.id.view_renderer_adapter_item_tag) as Renderer<State, Action>
+    private val RecyclerView.ViewHolder.renderer: Renderer<State, Action>?
+        get() = itemView.getTag(R.id.view_renderer_adapter_item_tag) as Renderer<State, Action>?
 
     protected inline fun <reified StateSubtype : State> addRendererDelegate(
         factory: ViewRenderer.Factory<*, out ViewRenderer<StateSubtype, Action>>,
