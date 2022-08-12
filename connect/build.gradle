@@ -11,6 +11,10 @@ android {
     defaultConfig {
         minSdkVersion libs.versions.android.min.get().toInteger()
     }
+
+    buildFeatures {
+        buildConfig = false
+    }
 }
 
 dependencies {

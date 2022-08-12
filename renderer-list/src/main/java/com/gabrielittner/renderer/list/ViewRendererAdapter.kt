@@ -1,6 +1,5 @@
 package com.gabrielittner.renderer.list
 
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.CallSuper
@@ -14,7 +13,6 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 abstract class ViewRendererAdapter<State : Any, Action : Any>(
@@ -44,17 +42,15 @@ abstract class ViewRendererAdapter<State : Any, Action : Any>(
         get() = itemView.getTag(R.id.view_renderer_adapter_item_tag) as Renderer<State, Action>
 
     protected inline fun <reified StateSubtype : State> addRendererDelegate(
-        factory: ViewRenderer.Factory<*, out ViewRenderer<StateSubtype, Action>>,
+        factory: ViewRenderer.BaseFactory<out ViewRenderer<StateSubtype, Action>>,
         noinline on: (item: StateSubtype, items: List<State>, position: Int) -> Boolean = { _, _, _ -> true },
-        noinline layoutInflater: (parent: ViewGroup) -> LayoutInflater = { LayoutInflater.from(it.context) },
     ) {
         val viewTypeId = View.generateViewId()
         val delegate = adapterDelegate<StateSubtype, State>(
             viewTypeId,
             on = { item, items, position -> item is StateSubtype && on(item, items, position) },
             layoutInflater = { parent: ViewGroup, _: Int ->
-                val inflater = layoutInflater(parent)
-                val renderer = factory.inflate(inflater, parent)
+                val renderer = factory.inflate(parent)
                 renderer.rootView.setTag(R.id.view_renderer_adapter_item_tag, renderer)
                 renderer.rootView
             }

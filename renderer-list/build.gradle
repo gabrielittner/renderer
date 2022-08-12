@@ -6,10 +6,14 @@ plugins {
 }
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion libs.versions.android.compile.get().toInteger()
 
     defaultConfig {
-        minSdkVersion 21
+        minSdkVersion libs.versions.android.min.get().toInteger()
+    }
+
+    buildFeatures {
+        buildConfig = false
     }
 }
 
