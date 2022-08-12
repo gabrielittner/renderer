@@ -1,6 +1,20 @@
 Change Log
 ==========
 
+Version 0.12.0 *(2022-08-12)*
+----------------------------
+
+Added compose facilities to make a step by step migration from Renderer to Compose easier
+- `Renderer` composable that allows showing a renderer inside compose
+- `ComposeRenderer` can be used to create a `Renderer` that is implemented using composables
+- `ViewRendererAdapter` supports `ComposeRenderer` for step by step migration of lists
+
+Other changes:
+- added `SimpleViewRendererAdapter` for lists that don't use diffing
+- `ViewRendererAdapter` and `SimpleViewRendererAdapter` support using plain adapter delegates
+- updated dependencies
+
+
 Version 0.11.0 *(2022-01-25)*
 ----------------------------
 
