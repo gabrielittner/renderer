@@ -17,7 +17,7 @@ adapterdelegates = "4.1.0"
 rxjava = "2.2.21"
 
 publish = "0.21.0"
-dokka = "1.4.32"
+dokka = "1.7.10"
 
 [libraries]
 coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
