@@ -114,26 +114,16 @@ abstract class ViewRenderer<State : Any, Action : Any>(
 
 
     /**
-     * A factory that to create ViewRenderer.
-     */
-    interface BaseFactory<R : Renderer<*, *>> {
-        /**
-         * Inflates the [Renderer] using [parent].
-         */
-        fun inflate(parent: ViewGroup): R
-    }
-
-    /**
      * A factory that inflates the a [ViewBinding] using the given [bindingFactory].
      */
     abstract class Factory<Binding : ViewBinding, R : ViewRenderer<*, *>>(
         private val bindingFactory: (LayoutInflater, ViewGroup?, Boolean) -> Binding
-    ) : BaseFactory<R> {
+    ) {
         /**
          * Inflates a [ViewBinding] using [bindingFactory] in the given [parent] and then creates
          * a [ViewRenderer] for it.
          */
-        final override fun inflate(parent: ViewGroup): R {
+        fun inflate(parent: ViewGroup): R {
             val inflater = LayoutInflater.from(parent.context)
             return inflate(inflater, parent)
         }

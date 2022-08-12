@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.annotation.CallSuper
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.gabrielittner.renderer.ComposeRenderer
 import com.gabrielittner.renderer.Renderer
 import com.gabrielittner.renderer.ViewRenderer
 import com.hannesdorfmann.adapterdelegates4.AsyncListDifferDelegationAdapter
@@ -42,7 +43,31 @@ abstract class ViewRendererAdapter<State : Any, Action : Any>(
         get() = itemView.getTag(R.id.view_renderer_adapter_item_tag) as Renderer<State, Action>
 
     protected inline fun <reified StateSubtype : State> addRendererDelegate(
-        factory: ViewRenderer.BaseFactory<out ViewRenderer<StateSubtype, Action>>,
+        factory: ViewRenderer.Factory<*, out ViewRenderer<StateSubtype, Action>>,
+        noinline on: (item: StateSubtype, items: List<State>, position: Int) -> Boolean = { _, _, _ -> true },
+    ) {
+        val viewTypeId = View.generateViewId()
+        val delegate = adapterDelegate<StateSubtype, State>(
+            viewTypeId,
+            on = { item, items, position -> item is StateSubtype && on(item, items, position) },
+            layoutInflater = { parent: ViewGroup, _: Int ->
+                val renderer = factory.inflate(parent)
+                renderer.rootView.setTag(R.id.view_renderer_adapter_item_tag, renderer)
+                renderer.rootView
+            }
+        ) {
+             @Suppress("UNCHECKED_CAST")
+            val renderer = itemView.getTag(R.id.view_renderer_adapter_item_tag) as Renderer<State, Action>
+
+            bind {
+                renderer.render(item)
+            }
+        }
+        delegatesManager.addDelegate(delegate)
+    }
+
+    protected inline fun <reified StateSubtype : State> addRendererDelegate(
+        factory: ComposeRenderer.Factory<out ComposeRenderer<StateSubtype, Action>>,
         noinline on: (item: StateSubtype, items: List<State>, position: Int) -> Boolean = { _, _, _ -> true },
     ) {
         val viewTypeId = View.generateViewId()

@@ -34,11 +34,11 @@ abstract class ComposeRenderer<State : Any, Action : Any>(
     /**
      * A factory that creates a [ComposeRenderer].
      */
-    abstract class Factory<R : ComposeRenderer<*, *>>() : BaseFactory<R> {
+    abstract class Factory<R : ComposeRenderer<*, *>> {
         /**
          * Creates a [ComposeRenderer] for [parent].
          */
-        final override fun inflate(parent: ViewGroup): R {
+        fun inflate(parent: ViewGroup): R {
             val view = ComposeView(parent.context)
             return create(view)
         }
