@@ -4,7 +4,6 @@ repo_name: Renderer
 repo_url: https://github.com/gabrielittner/renderer
 site_description: "Renderer"
 site_author: Gabriel Ittner
-remote_branch: gh-pages
 
 copyright: 'Copyright &copy; 2021 Gabriel Ittner.'
 

@@ -1,8 +1,7 @@
 Change Log
 ==========
 
-Version 0.12.0 *(2022-08-12)*
-----------------------------
+## 0.12.0 *(2022-08-12)*
 
 Added compose facilities to make a step by step migration from Renderer to Compose easier
 - `Renderer` composable that allows showing a renderer inside compose
@@ -15,33 +14,28 @@ Other changes:
 - updated dependencies
 
 
-Version 0.11.0 *(2022-01-25)*
-----------------------------
+## 0.11.0 *(2022-01-25)*
 
 - remove `StateMachine` base classes
 - remove all `connect` artifacts except for `connect-flow` which is now called `connect`
 
 
-Version 0.10.2 *(2021-10-24)*
-----------------------------
+## 0.10.2 *(2021-10-24)*
 
 - build against updated `StateMachine` interface
 
 
-Version 0.10.1 *(2021-06-18)*
-----------------------------
+## 0.10.1 *(2021-06-18)*
 
 - fix `connect()` method of `connect-flow` not emitting any actions
 
 
-Version 0.10.0 *(2021-06-18)*
-----------------------------
+## 0.10.0 *(2021-06-18)*
 
 - `SimpleStateMachine` and `RxSimpleStateMachine` now return a `StateFlow` and therefore require an `initialState` constructor parameter
 
 
-Version 0.9.0 *(2021-06-16)*
-----------------------------
+## 0.9.0 *(2021-06-16)*
 
 - add new `connect-flow` artifact
   - `connect` method to use Freeletics MAD `StateMachine` with `Renderer`
@@ -50,8 +44,7 @@ Version 0.9.0 *(2021-06-16)*
   - `RxSimpleStateMachine` implementation that is a `RxLiveDataStateMachine` like implementation for `StateMachine`
 
 
-Version 0.8.0 *(2021-06-10)*
-----------------------------
+## 0.8.0 *(2021-06-10)*
 
 - BREAKING: change `Renderer` to be `Flow` based
     - `actions` now returns a `Flow<Action>`
@@ -65,8 +58,7 @@ Version 0.8.0 *(2021-06-10)*
 - removed deprecated `connect-rx` artifact
 
 
-Version 0.7.0 *(2021-01-29)*
-----------------------------
+## 0.7.0 *(2021-01-29)*
 
 - removed `Factory`, `InflaterFactory` and `LayoutInflaterFactory`
 - renamed `ViewBindingFactory` to `Factory`
@@ -74,15 +66,13 @@ Version 0.7.0 *(2021-01-29)*
 - `State` and `Action` generics now use `Any` as bound
 - removed renderer-delegation module
 
-Version 0.6.0 *(2020-09-07)*
-----------------------------
+## 0.6.0 *(2020-09-07)*
 
 - rename all `...ViewModel` classes to `...StateMachine`
 - add deprecated typealiases for old names
 - add `ViewBinding` constructor overload to `ViewRenderer`
 
-Version 0.5.0 *(2020-05-10)*
-----------------------------
+## 0.5.0 *(2020-05-10)*
 
 - `Fragment.connect` is now callable from `onCreateView()`
 - make `ViewRenderer.LayoutInflaterFactory` layout id a ctor parameter
@@ -90,8 +80,7 @@ Version 0.5.0 *(2020-05-10)*
 - remove `LayoutInflater` and `attachToRoot: Boolean` from `InflaterFactory`
 - allow to map the type of actions in `DelegatingRenderer`
 
-Version 0.4.0 *(2020-05-03)*
-----------------------------
+## 0.4.0 *(2020-05-03)*
 
 - change `ViewRenderer.InflaterFactory` to an interface
 - make the parent `ViewGroup` passed into `InflaterFactory` nullable
@@ -102,8 +91,7 @@ Version 0.4.0 *(2020-05-03)*
 - fix sources not getting published
 
 
-Version 0.3.0 *(2020-01-17)*
-----------------------------
+## 0.3.0 *(2020-01-17)*
 
 - BREAKING: subclasses of `ViewRenderer` now need to override `viewActions` instead of `actions`
 - introduce `sendAction()` in `ViewRenderer` to avoid having to create subjects in implementations
@@ -111,13 +99,11 @@ Version 0.3.0 *(2020-01-17)*
 - add `ViewRenderer.InflaterFactory` to tie a `ViewRenderer` to a XML layout
 - cleaned up connect API, restructured modules
 
-Version 0.2.1 *(2019-10-26)*
-----------------------------
+## 0.2.1 *(2019-10-26)*
 
 - fix the used `LifecycleOwner` used to connect a `Fragment`
 
-Version 0.2.0 *(2019-10-20)*
-----------------------------
+## 0.2.0 *(2019-10-20)*
 
 - renamed Binder to Renderer (also includes artifact names)
 - removed `connectors` artifact
@@ -126,17 +112,14 @@ Version 0.2.0 *(2019-10-20)*
 - moved `DelegatingBinder` to it's own `binder-delegation` artifact
 - various naming improvements/fixes
 
-Version 0.1.2 *(2019-09-26)*
-----------------------------
+## 0.1.2 *(2019-09-26)*
 
 - fix the used `LifecycleOwner` used to connect a `Fragment`
 
-Version 0.1.1 *(2019-09-17)*
-----------------------------
+## 0.1.1 *(2019-09-17)*
 
 - fix ViewBinder.state never returning the actual value
 
-Version 0.1.0 *(2019-09-15)*
-----------------------------
+## 0.1.0 *(2019-09-15)*
 
 - initial release

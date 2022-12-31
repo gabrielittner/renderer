@@ -4,15 +4,31 @@ on:
   push:
     branches:
       - main
+  # TODO: replace with on push tag https://github.com/actions/deploy-pages/issues/76
+  workflow_run:
+    workflows: [Publish Release]
+    types:
+      - completed
 
 jobs:
   publish:
 
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Install JDK
         uses: actions/setup-java@v3
@@ -32,21 +48,28 @@ jobs:
         run: pip install mkdocs-material
 
       - name: Build docs
-        run: ./gradlew dokkaGfm
+        run: ./gradlew dokkaHtml
 
       - name: Copy docs
         run: |
           cp README.md docs/index.md
-          mkdir -p docs/Javadoc/connect
-          cp -R connect/build/dokka/gfm/. docs/Javadoc/connect/
-          mkdir -p docs/Javadoc/renderer
-          cp -R renderer/build/dokka/gfm/. docs/Javadoc/renderer/
-          mkdir -p docs/Javadoc/renderer-list
-          cp -R renderer-list/build/dokka/gfm/. docs/Javadoc/renderer-list/
+          sed -i '/^\[\!\[GitHub release/d' docs/index.md
+          sed -i "s/<latest-version>/$(git describe --tags --abbrev=0)/" docs/index.md
+          mkdir -p docs/API/connect
+          cp -R connect/build/dokka/html/. docs/API/connect/
+          mkdir -p docs/API/renderer
+          cp -R renderer/build/dokka/html/. docs/API/renderer/
+          mkdir -p docs/API/renderer-list
+          cp -R renderer-list/build/dokka/html/. docs/API/renderer-list/
 
-      - name: Deploy MkDocs
-        run: |
-          git fetch origin gh-pages:gh-pages
-          mkdocs gh-deploy --force
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build MkDocs
+        run: mkdocs build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1

@@ -6,10 +6,12 @@ TODO
 
 Add a Gradle dependency:
 
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/gabrielittner/renderer?logo=github&sort=semver)](https://github.com/gabrielittner/renderer/releases)
+
 ```groovy
-implementation "com.gabrielittner.renderer:renderer:0.12.0"
-implementation "com.gabrielittner.renderer:renderer-list:0.12.0"
-implementation "com.gabrielittner.renderer:connect:0.12.0"
+implementation "com.gabrielittner.renderer:renderer:<latest-version>"
+implementation "com.gabrielittner.renderer:renderer-list:<latest-version>"
+implementation "com.gabrielittner.renderer:connect:<latest-version>"
 ```
 
 Snapshots of the development version are available in [Sonatype's `snapshots` repository][snap].
