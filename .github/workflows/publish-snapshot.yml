@@ -29,12 +29,12 @@ jobs:
         run: ./.github/android-sdk.sh
 
       - name: Set version for main
-        if: ${{ github.ref_name == 'main' }}
+        if: ${{ github.ref_name == 'main' || startsWith(github.ref, 'refs/tags/') }}
         run: |
           echo "ORG_GRADLE_PROJECT_VERSION_NAME=$(git describe --tags --abbrev=0 | awk -F. '/[0-9]+\./{$NF++;print}' OFS=.)-SNAPSHOT" >> $GITHUB_ENV
 
       - name: Set version for branch
-        if: ${{ github.ref_name != 'main' }}
+        if: ${{ github.ref_name != 'main' && !startsWith(github.ref, 'refs/tags/') }}
         run: |
           echo "ORG_GRADLE_PROJECT_VERSION_NAME=${{ github.ref_name }}-SNAPSHOT" | sed 's#/#-#g' >> $GITHUB_ENV
 
