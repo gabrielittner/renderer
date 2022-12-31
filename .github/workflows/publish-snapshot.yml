@@ -11,6 +11,7 @@ jobs:
   publish:
 
     runs-on: ubuntu-latest
+    if: github.repository == 'gabrielittner/renderer'
 
     steps:
       - name: Checkout
