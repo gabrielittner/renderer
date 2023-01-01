@@ -66,11 +66,13 @@ Other changes:
 - `State` and `Action` generics now use `Any` as bound
 - removed renderer-delegation module
 
+
 ## 0.6.0 *(2020-09-07)*
 
 - rename all `...ViewModel` classes to `...StateMachine`
 - add deprecated typealiases for old names
 - add `ViewBinding` constructor overload to `ViewRenderer`
+
 
 ## 0.5.0 *(2020-05-10)*
 
@@ -79,6 +81,7 @@ Other changes:
 - make `ViewRenderer.ViewBindingFactory` ViewBinding creator a ctor parameter
 - remove `LayoutInflater` and `attachToRoot: Boolean` from `InflaterFactory`
 - allow to map the type of actions in `DelegatingRenderer`
+
 
 ## 0.4.0 *(2020-05-03)*
 
@@ -103,6 +106,7 @@ Other changes:
 
 - fix the used `LifecycleOwner` used to connect a `Fragment`
 
+
 ## 0.2.0 *(2019-10-20)*
 
 - renamed Binder to Renderer (also includes artifact names)
@@ -112,13 +116,16 @@ Other changes:
 - moved `DelegatingBinder` to it's own `binder-delegation` artifact
 - various naming improvements/fixes
 
+
 ## 0.1.2 *(2019-09-26)*
 
 - fix the used `LifecycleOwner` used to connect a `Fragment`
 
+
 ## 0.1.1 *(2019-09-17)*
 
 - fix ViewBinder.state never returning the actual value
+
 
 ## 0.1.0 *(2019-09-15)*
 
