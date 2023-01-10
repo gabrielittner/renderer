@@ -12,7 +12,7 @@ androidx-lifecycle = "2.5.1"
 androidx-fragment = "1.5.5"
 androidx-recyclerview = "1.2.1"
 
-mad = "0.9.1"
+mad = "0.10.0"
 
 adapterdelegates = "4.3.2"
 
