@@ -15,6 +15,17 @@ android {
     buildFeatures {
         buildConfig = false
     }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.toVersion(libs.versions.java.get())
+        targetCompatibility = JavaVersion.toVersion(libs.versions.java.get())
+    }
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+  kotlinOptions {
+    jvmTarget = libs.versions.java.get()
+  }
 }
 
 dependencies {
