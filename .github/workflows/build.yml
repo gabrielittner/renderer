@@ -8,12 +8,8 @@ on:
 
 jobs:
   build:
-    name: JDK ${{ matrix.java_version }}
+    name: build
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        java_version: [11]
 
     steps:
       - name: Checkout
@@ -26,7 +22,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           distribution: zulu
-          java-version: ${{ matrix.java_version }}
+          java-version: 17
 
       - name: Install Android SDK
         run: ./.github/android-sdk.sh
