@@ -1,13 +1,13 @@
 [versions]
 java = "11"
-kotlin = "1.8.10"
+kotlin = "1.8.20"
 coroutines = "1.6.4"
 
 android-gradle = "7.4.2"
 android-min = "21"
 android-compile = "33"
 androidx-activity = "1.7.0"
-androidx-compose-compiler = "1.4.4"
+androidx-compose-compiler = "1.4.5"
 androidx-compose-runtime = "1.4.1"
 androidx-lifecycle = "2.6.1"
 androidx-fragment = "1.5.6"
