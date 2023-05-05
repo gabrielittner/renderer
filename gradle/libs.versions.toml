@@ -1,6 +1,6 @@
 [versions]
 java = "11"
-kotlin = "1.8.20"
+kotlin = "1.8.21"
 coroutines = "1.6.4"
 
 android-gradle = "8.0.1"
