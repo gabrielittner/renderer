@@ -3,7 +3,7 @@ java = "11"
 kotlin = "1.8.21"
 coroutines = "1.7.1"
 
-android-gradle = "8.0.1"
+android-gradle = "8.0.2"
 android-min = "21"
 android-compile = "33"
 androidx-activity = "1.7.2"
