@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+## 0.13.0 *(2023-07-11)*
+
+- Updated dependencies
+
+
 ## 0.12.0 *(2022-08-12)*
 
 Added compose facilities to make a step by step migration from Renderer to Compose easier

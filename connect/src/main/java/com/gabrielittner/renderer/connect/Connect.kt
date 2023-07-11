@@ -3,7 +3,7 @@ package com.gabrielittner.renderer.connect
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
-import com.freeletics.mad.statemachine.StateMachine
+import com.freeletics.khonshu.statemachine.StateMachine
 import com.gabrielittner.renderer.Renderer
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
