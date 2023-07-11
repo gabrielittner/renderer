@@ -31,7 +31,7 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
 
 dependencies {
     api project(":renderer")
-    api libs.mad.statemachine
+    api libs.khonshu.statemachine
     api libs.coroutines.core
     api libs.androidx.lifecycle.common
 }
