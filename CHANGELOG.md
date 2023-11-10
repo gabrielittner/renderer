@@ -1,6 +1,13 @@
 Change Log
 ==========
 
+## 0.13.1 *(2023-11-10)*
+
+- Fix an issue in the `Renderer` composable that causes the collection of the actions of the renderer to be 
+  started, stopped and then started again whenever the composable enters the composition.
+- Updated dependencies
+
+
 ## 0.13.0 *(2023-07-11)*
 
 - Updated dependencies
