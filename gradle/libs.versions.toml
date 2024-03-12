@@ -19,7 +19,7 @@ adapterdelegates = "4.3.2"
 
 rxjava = "2.2.21"
 
-publish = "0.27.0"
+publish = "0.28.0"
 dokka = "1.9.20"
 
 [libraries]
