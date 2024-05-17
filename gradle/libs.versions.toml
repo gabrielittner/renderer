@@ -13,7 +13,7 @@ androidx-lifecycle = "2.7.0"
 androidx-fragment = "1.7.0"
 androidx-recyclerview = "1.3.2"
 
-khonshu = "0.23.1"
+khonshu = "0.25.0"
 
 adapterdelegates = "4.3.2"
 
