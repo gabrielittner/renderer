@@ -140,6 +140,6 @@ abstract class ViewRenderer<State : Any, Action : Any>(
         /**
          * Create a [ViewBindingRenderer] for the given [binding].
          */
-        protected abstract fun create(binding: Binding): R
+        abstract fun create(binding: Binding): R
     }
 }
